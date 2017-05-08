@@ -11,7 +11,8 @@
 #include <vector>
 #include <array>
 
-std::vector<byte_t> input_bytes(std::istream& i_stream);
+std::vector<byte_t> input_bytes_from_str(std::istream &i_stream);
+std::vector<byte_t> input_bytes_from_bin(std::istream &i_stream);
 
 block_t bytes_to_block(byte_t i_byte1, byte_t i_byte2);
 

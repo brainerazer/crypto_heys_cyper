@@ -4,6 +4,8 @@
 
 #include "io.h"
 
+#include <iterator>
+
 namespace
 {
     // http://stackoverflow.com/questions/8011700/how-do-I-extract-specific-n-bits-of-a-32-bit-unsigned-integer-in-c
@@ -14,7 +16,7 @@ namespace
     }
 }
 
-std::vector<byte_t> input_bytes(std::istream& i_stream)
+std::vector<byte_t> input_bytes_from_str(std::istream &i_stream)
 {
     std::vector<byte_t> result;
     std::string tmp;
@@ -29,6 +31,12 @@ std::vector<byte_t> input_bytes(std::istream& i_stream)
         result.push_back(b);
     }
 
+    return result;
+}
+
+std::vector<byte_t> input_bytes_from_bin(std::istream &i_stream)
+{
+    std::vector<byte_t> result((std::istreambuf_iterator<char>(i_stream)), std::istreambuf_iterator<char>());
     return result;
 }
 
