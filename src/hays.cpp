@@ -3,8 +3,10 @@
 //
 
 #include <array>
-#include "Hays.h"
+#include "hays.h"
+
 #include "io.h"
+#include "byte_utils.h"
 
 const std::array<fragm_t, 16> S_block = {0x8, 0x0, 0xC, 0x4, 0x9, 0x6, 0x7, 0xB, 0x2, 0x3, 0x1, 0xF, 0x5, 0xE, 0xA, 0xD};
 
@@ -47,6 +49,8 @@ block_t interchange_and_merge(const std::array<fragm_t, 4> &i_arr)
             size_t new_bit_index = i * 4 + j;
             set_bit(result, new_bit_index, get_bit(i_arr[j], i));
         }
+
+    return result;
 }
 
 block_t cipher(block_t i_plaintext, std::vector<block_t> i_round_keys)
