@@ -6,7 +6,6 @@
 #define LAB1YAK_BYTE_UTILS_H
 
 #include "common.h"
-#include <array>
 
 block_t bytes_to_block(byte_t i_byte1, byte_t i_byte2);
 std::array<fragm_t, 4> split_block(block_t i_block);

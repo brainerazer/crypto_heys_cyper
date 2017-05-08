@@ -14,7 +14,7 @@ namespace
 {
     bool get_bit(fragm_t i_fragm, size_t i_bit)
     {
-        return (i_fragm >> i_bit) + 1;
+        return (i_fragm >> i_bit) & 0x1;
     }
 
     void set_bit(block_t& i_fragm, size_t i_index, bool i_value)
@@ -41,7 +41,7 @@ block_t round(block_t i_block, block_t i_key)
 
 block_t interchange_and_merge(const std::array<fragm_t, 4> &i_arr)
 {
-    block_t result;
+    block_t result = 0x0;
 
     for(size_t i = 0; i < 4; i++)
         for(size_t j = 0; j < 4; j++)
@@ -49,6 +49,17 @@ block_t interchange_and_merge(const std::array<fragm_t, 4> &i_arr)
             size_t new_bit_index = i * 4 + j;
             set_bit(result, new_bit_index, get_bit(i_arr[j], i));
         }
+
+    return result;
+}
+
+std::vector<block_t> split_round_keys(std::vector<byte_t> i_vec)
+{
+    std::vector<block_t> result;
+
+    // round keys are two-byte
+    for(size_t i = 0; i < i_vec.size(); i += 2)
+        result.insert(result.end(), bytes_to_block(i_vec[i], i_vec[i+1]));
 
     return result;
 }

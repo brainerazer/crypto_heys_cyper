@@ -7,6 +7,7 @@
 
 #include <cstdint>
 #include <vector>
+#include <array>
 
 typedef uint8_t byte_t;
 typedef uint16_t block_t;

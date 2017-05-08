@@ -6,7 +6,6 @@
 #define LAB1YAK_IO_H
 
 #include "common.h"
-
 #include <istream>
 
 std::vector<byte_t> input_bytes_from_str(std::istream &i_stream);
