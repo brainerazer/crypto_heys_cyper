@@ -8,6 +8,7 @@
 #include "io.h"
 #include "byte_utils.h"
 
+// No. 2
 const std::array<fragm_t, 16> S_block = {0x8, 0x0, 0xC, 0x4, 0x9, 0x6, 0x7, 0xB, 0x2, 0x3, 0x1, 0xF, 0x5, 0xE, 0xA, 0xD};
 
 namespace
@@ -63,6 +64,7 @@ std::vector<block_t> split_round_keys(std::vector<byte_t> i_vec)
 
     return result;
 }
+
 
 block_t cipher(block_t i_plaintext, std::vector<block_t> i_round_keys)
 {
