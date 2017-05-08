@@ -2,8 +2,8 @@
 // Created by Bohdan Rybak on 04.05.2017.
 //
 
-#ifndef LAB1YAK_HEISS_H
-#define LAB1YAK_HEISS_H
+#ifndef LAB1YAK_HEIS_H
+#define LAB1YAK_HEIS_H
 
 #include "common.h"
 
@@ -15,4 +15,4 @@ std::vector<block_t> split_round_keys(std::vector<byte_t> i_vec);
 
 block_t cipher(block_t i_plaintext, std::vector<block_t> i_round_keys); // N of rounds = len(keys) - 1
 
-#endif //LAB1YAK_HEISS_H
+#endif //LAB1YAK_HEIS_H

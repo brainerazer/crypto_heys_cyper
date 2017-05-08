@@ -4,7 +4,7 @@
 
 #include <catch.hpp>
 
-#include "../src/hays.h"
+#include "../src/heys.h"
 
 TEST_CASE("Interchange and merge works fine", "[hays]") {
     SECTION("Interchanges and merges does its job") {

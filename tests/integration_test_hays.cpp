@@ -7,7 +7,7 @@
 #include <iostream>
 
 #include "../src/io.h"
-#include "../src/hays.h"
+#include "../src/heys.h"
 #include "../src/byte_utils.h"
 
 

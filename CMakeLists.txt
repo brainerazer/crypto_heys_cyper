@@ -3,8 +3,8 @@ project(Lab1yak)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES src/io.h src/io.cpp src/common.h src/hays.cpp src/hays.h src/byte_utils.cpp src/byte_utils.h)
-set(TEST_SOURCES tests/catch_main.cpp tests/test_io.cpp tests/test_byte_utils.cpp tests/test_hays.cpp tests/integration_test_hays.cpp)
+set(SOURCE_FILES src/io.h src/io.cpp src/common.h src/heys.cpp src/heys.h src/byte_utils.cpp src/byte_utils.h)
+set(TEST_SOURCES tests/catch_main.cpp tests/test_io.cpp tests/test_byte_utils.cpp tests/test_heys.cpp tests/integration_test_hays.cpp)
 
 add_library(Lab1yak ${SOURCE_FILES})
 
