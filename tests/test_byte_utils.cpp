@@ -46,3 +46,38 @@ TEST_CASE("Block splits fine", "[bytes]") {
         REQUIRE(a_to_v(res) == a_to_v(gt));
     }
 }
+
+TEST_CASE("Merge blocks merges fine", "[bytes]") {
+    SECTION("Merge blocks provides correct result") {
+        block_t block1 = 0xABCD;
+        block_t block2 = 0xEF01;
+        uint32_t gt = 0xABCDEF01;
+        uint32_t res = merge_blocks(block1, block2);
+        
+        REQUIRE(res == gt);
+    }
+}
+
+
+TEST_CASE("Split blocks merges fine", "[bytes]") {
+    SECTION("Split blocks provides correct result") {
+        uint32_t merged = 0xABCDEF01;
+        block_t block1_gt = 0xABCD;
+        block_t block2_gt = 0xEF01;
+        
+        auto res = split_blocks(merged);
+
+        REQUIRE(res.first == block1_gt);
+        REQUIRE(res.second == block2_gt);
+    }
+    
+    SECTION("Split after merge leaves values the same") {
+        block_t block1 = 0x6743;
+        block_t block2 = 0xACE2;
+        
+        auto res = split_blocks(merge_blocks(block1, block2));
+        
+        REQUIRE(res.first == block1);
+        REQUIRE(res.second == block2);
+    }
+}

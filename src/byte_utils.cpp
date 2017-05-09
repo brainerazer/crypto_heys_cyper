@@ -29,3 +29,16 @@ std::array<fragm_t, 4> split_block(block_t i_block)
 
     return res;
 };
+
+uint32_t merge_blocks(block_t a, block_t b)
+{
+    return (uint32_t(a) << 16) + uint32_t(b);
+}
+
+std::pair<uint16_t, uint16_t> split_blocks(uint32_t i_mblock)
+{
+    uint16_t f = i_mblock >> 16;
+    uint16_t s = (uint16_t)i_mblock;
+
+    return std::make_pair(f, s);
+}

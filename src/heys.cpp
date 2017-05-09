@@ -54,7 +54,7 @@ block_t interchange_and_merge(const std::array<fragm_t, 4> &i_arr)
     return result;
 }
 
-std::vector<block_t> split_round_keys(std::vector<byte_t> i_vec)
+std::vector<block_t> split_round_keys(const std::vector<byte_t>& i_vec)
 {
     std::vector<block_t> result;
 
@@ -66,11 +66,19 @@ std::vector<block_t> split_round_keys(std::vector<byte_t> i_vec)
 }
 
 
-block_t cipher(block_t i_plaintext, std::vector<block_t> i_round_keys)
+block_t cipher_rounds(block_t i_plaintext, const std::vector<block_t>& i_round_keys)
 {
     block_t result = i_plaintext;
-    for(size_t i = 0; i < i_round_keys.size() - 1; i++)
+    for(size_t i = 0; i < i_round_keys.size(); i++)
         result = round(result, i_round_keys[i]);
 
-    return result ^ i_round_keys.back();
+    return result;
+}
+
+block_t cipher(block_t i_plaintext, const std::vector<block_t>& i_round_keys)
+{
+    block_t last_key = i_round_keys.back();
+    std::vector<block_t> key_vec(i_round_keys.begin(), i_round_keys.end() - 1);
+
+    return cipher_rounds(i_plaintext, key_vec) ^ last_key;
 }
